@@ -1,0 +1,26 @@
+<h1>Capital Cities Quiz</h1>
+<form>
+  <div class="form-group" *ngFor="let q of questions">
+    <label name="q.question" for="name">{{ q.question }}</label>
+    <div>
+      <label *ngFor="let a of q.answers">
+        <br />
+        {{ a.answer }}
+        <input
+          (click)="dataChange({ q: q, na: a.answer })"
+          type="radio"
+          name="{{ q.question }}"
+          value="{{ a.answer }}"
+          [checked]="a.isAnswer"
+        />
+      </label>
+    </div>
+
+    <br />
+    <hr />
+  </div>
+
+  <span *ngFor="let item of [].constructor(pages); let i = index">
+    <button (click)="cp(i)">{{ i + 1 }}</button>
+  </span>
+</form>
